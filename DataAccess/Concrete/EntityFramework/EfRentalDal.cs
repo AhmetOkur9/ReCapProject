@@ -1,16 +1,15 @@
 ﻿using Core.EntityFramework;
+using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Abstract
+namespace DataAccess.Concrete.EntityFramework
 {
-    public interface ICarDal:IEntityRepository<Car>
+    public class EfRentalDal:EfEntityRepositortyBase<Rental,KaanCenterContext>,IRentalDal
     {
-        List<CarDetailDto> GetCarDetails();
     }
 }
