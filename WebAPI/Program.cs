@@ -1,5 +1,8 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
+using Business.DependencyResolvers.Autofac;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 
@@ -12,10 +15,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Startup();
-builder.Services.AddSingleton<ICarService, CarManager>();
-builder.Services.AddSingleton<ICarDal, EfCarDal>();
+//builder.Services.AddSingleton<ICarService, CarManager>();
+//builder.Services.AddSingleton<ICarDal, EfCarDal>();
 
 var app = builder.Build();
+// IOC Container Autofac yapýlandýrmasý, sistemde bulunan otomatik yapý yerine Autofac kullanýcaðýmýzý belirtmek için bunu kullandýk.
+builder.Host
+       .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+       .ConfigureContainer<ContainerBuilder>(builder =>
+       {
+           builder.RegisterModule(new AutofacBussinessModule());
+       });
 
 
 // Configure the HTTP request pipeline.
