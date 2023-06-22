@@ -16,11 +16,13 @@ namespace Business.DependencyResolvers.Autofac
 {
     public class AutofacBussinessModule : Module
     {
+
         protected override void Load(ContainerBuilder builder)
         {
+
             builder.RegisterType<CarManager>().As<ICarService>().SingleInstance();
             builder.RegisterType<EfCarDal>().As<ICarDal>().SingleInstance();
-
+            
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

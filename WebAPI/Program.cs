@@ -5,6 +5,8 @@ using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +19,6 @@ builder.Services.AddSwaggerGen();
 //Startup();
 //builder.Services.AddSingleton<ICarService, CarManager>();
 //builder.Services.AddSingleton<ICarDal, EfCarDal>();
-
-var app = builder.Build();
 // IOC Container Autofac yapýlandýrmasý, sistemde bulunan otomatik yapý yerine Autofac kullanýcaðýmýzý belirtmek için bunu kullandýk.
 builder.Host
        .UseServiceProviderFactory(new AutofacServiceProviderFactory())
@@ -26,6 +26,10 @@ builder.Host
        {
            builder.RegisterModule(new AutofacBussinessModule());
        });
+
+var app = builder.Build();
+
+
 
 
 // Configure the HTTP request pipeline.
