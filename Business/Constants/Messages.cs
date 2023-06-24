@@ -21,5 +21,11 @@ namespace Business.Constants
         public static string RentalCarListed = "Seçtiğiniz Id ye uyan araba listelendi";
         public static string CarIsRented = "Seçtiğiniz araba şuan başkası tarafından kiralanmış halde";
 
+        public static string UserAdded = "Kullanıcı eklendi";
+        public static string UserIdListed = "Kullanıcı Id'si listenlendi";
+        public static string UserListed = "Kullanıcı listelendi";
+        public static string UserUpdated = "Kullanıcı güncellendi";
+        public static string UserDeleted = "Kullanıcı Silindi";
+
     }
 }

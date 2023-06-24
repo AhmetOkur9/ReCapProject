@@ -19,6 +19,8 @@ builder.Services.AddSwaggerGen();
 //Startup();
 //builder.Services.AddSingleton<ICarService, CarManager>();
 //builder.Services.AddSingleton<ICarDal, EfCarDal>();
+builder.Services.AddSingleton<IUserService, UserManager>();
+builder.Services.AddSingleton<IUserDal, EfUserDal>();
 // IOC Container Autofac yapýlandýrmasý, sistemde bulunan otomatik yapý yerine Autofac kullanýcaðýmýzý belirtmek için bunu kullandýk.
 builder.Host
        .UseServiceProviderFactory(new AutofacServiceProviderFactory())
