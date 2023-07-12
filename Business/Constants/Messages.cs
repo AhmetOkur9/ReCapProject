@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,5 +28,12 @@ namespace Business.Constants
         public static string UserUpdated = "Kullanıcı güncellendi";
         public static string UserDeleted = "Kullanıcı Silindi";
 
+        public static string ClaimSuccess = "Talep Başarılı";
+        public static string AccessTokenCreated = "Access Token başarı ile oluşturuldu";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string PasswordError = "Şifre Hatalı";
+        public static string UserAlreadyExist = "Bu kullanıcı zaten mevcut";
+        public static string UserRegistered = "Kullanıcı başarıyla kayıt edildi";
+        public static string SuccessfulLogin = "Sisteme giriş başarılı";
     }
 }

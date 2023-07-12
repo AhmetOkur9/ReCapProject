@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Entities.Concrete;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -45,6 +46,16 @@ namespace Business.Concrete
         public IDataResult<List<User>> GetUserID(int id)
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll(u => u.Id == id),Messages.UserIdListed);
+        }
+
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
+        }
+
+        public User GetByMail(string email)
+        {
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }
