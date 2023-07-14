@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.EntityFramework
+namespace Core.DataAccess.EntityFramework
 {
     public class EfEntityRepositortyBase<TEntity, TContext> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
@@ -46,8 +46,8 @@ namespace Core.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return filter == null 
-                    ? context.Set<TEntity>().ToList() 
+                return filter == null
+                    ? context.Set<TEntity>().ToList()
                     : context.Set<TEntity>().Where(filter).ToList();
             }
         }

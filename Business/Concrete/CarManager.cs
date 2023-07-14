@@ -63,5 +63,10 @@ namespace Business.Concrete
             _carDal.Update(car);
             return new SuccessResult(Messages.CarUpdated);
         }
+
+        public IResult AddTransactionalTest(Car car)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

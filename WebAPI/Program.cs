@@ -3,6 +3,9 @@ using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
+using Core.DependencyResolvers;
+using Core.Extensions;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.Jwt;
 using DataAccess.Abstract;
@@ -22,7 +25,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Startup();
 
-// IOC Container Autofac yapýlandýrmasý, sistemde bulunan otomatik yapý yerine Autofac kullanýcaðýmýzý belirtmek için bunu kullandýk.
+
 builder.Host
        .UseServiceProviderFactory(new AutofacServiceProviderFactory())
        .ConfigureContainer<ContainerBuilder>(builder =>
@@ -31,6 +34,7 @@ builder.Host
        });
 
 builder.Services.AddControllers();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowOrigin",
@@ -52,6 +56,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
     };
 });
+
+builder.Services.AddDependencyResolvers(new ICoreModule[]
+        {
+            new CoreModule()
+        });
+
+
 
 var app = builder.Build();
 
