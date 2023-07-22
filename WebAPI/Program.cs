@@ -17,6 +17,8 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins"; //Cors
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -37,9 +39,12 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowOrigin",
-        builder => builder.WithOrigins("http://localhost:3000"));
-});
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyOrigin();
+                      });
+});//Cors
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -78,6 +83,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
+
+app.UseCors(MyAllowSpecificOrigins);//Cors
 
 app.UseHttpsRedirection();
 

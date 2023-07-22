@@ -7,11 +7,11 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]  //ATTIRIBUTE
-    public class CarController : ControllerBase
+    public class carController : ControllerBase
     {
         ICarService _carService;
 
-        public CarController(ICarService carService)
+        public carController(ICarService carService)
         {
             _carService = carService;
         }
@@ -20,6 +20,17 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _carService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getcardetails")]
+        public IActionResult GetCarDetails() 
+        {
+            var result = _carService.GetCarDetails();
             if (result.Success)
             {
                 return Ok(result);
@@ -80,6 +91,8 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+
 
     }
 }

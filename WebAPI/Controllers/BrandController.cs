@@ -1,26 +1,23 @@
 ﻿using Business.Abstract;
-using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.DataAnnotations;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class userController : ControllerBase
+    public class brandController : ControllerBase
     {
-        IUserService _userService;
-
-        public userController(IUserService userService)
+        IBrandService _brandService;
+        public brandController(IBrandService brandService)
         {
-            _userService = userService;
+            _brandService = brandService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _userService.GetAll();
+            var result = _brandService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -28,11 +25,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-
         [HttpPost("add")]
-        public IActionResult Add(User user)
+        public IActionResult Add(Brand brand)
         {
-            var result = _userService.Add(user);
+            var result = _brandService.Add(brand);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +37,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult Delete(User user)
+        public IActionResult Delete(Brand brand)
         {
-            var result = _userService.Delete(user);
+            var result = _brandService.Delete(brand);
             if (result.Success)
             {
                 return Ok(result);
@@ -51,9 +47,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPatch("update")]
-        public IActionResult Update(User user)
+        public IActionResult Update(Brand brand)
         {
-            var result = _userService.Update(user);
+            var result = _brandService.Update(brand);
             if (result.Success)
             {
                 return Ok(result);

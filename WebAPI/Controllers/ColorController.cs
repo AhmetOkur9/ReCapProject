@@ -1,26 +1,24 @@
 ﻿using Business.Abstract;
-using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.DataAnnotations;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class userController : ControllerBase
+    public class colorController : ControllerBase
     {
-        IUserService _userService;
+        IColorService _colorService;
 
-        public userController(IUserService userService)
+        public colorController(IColorService colorService)
         {
-            _userService = userService;
+            _colorService = colorService;
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public IActionResult GetAll() 
         {
-            var result = _userService.GetAll();
+            var result = _colorService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -28,11 +26,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-
         [HttpPost("add")]
-        public IActionResult Add(User user)
+        public IActionResult Add(Color color)
         {
-            var result = _userService.Add(user);
+            var result = _colorService.Add(color);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,24 +38,26 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult Delete(User user)
+        public IActionResult Delete(Color color) 
         {
-            var result = _userService.Delete(user);
+            var result = _colorService.Delete(color);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
+
         [HttpPatch("update")]
-        public IActionResult Update(User user)
+        public IActionResult Update(Color color)
         {
-            var result = _userService.Update(user);
+            var result = _colorService.Update(color);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
+
     }
 }

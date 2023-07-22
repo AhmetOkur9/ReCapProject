@@ -1,26 +1,23 @@
 ﻿using Business.Abstract;
-using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.DataAnnotations;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class userController : ControllerBase
+    public class customerController : ControllerBase
     {
-        IUserService _userService;
-
-        public userController(IUserService userService)
+        ICustomerService _customerService;
+        public customerController(ICustomerService customerService)
         {
-            _userService = userService;
+            _customerService= customerService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _userService.GetAll();
+            var result = _customerService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -28,12 +25,11 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-
         [HttpPost("add")]
-        public IActionResult Add(User user)
+        public IActionResult Add(Customer customer)
         {
-            var result = _userService.Add(user);
-            if (result.Success)
+            var result = _customerService.Add(customer);
+            if (result.Success) 
             {
                 return Ok(result);
             }
@@ -41,24 +37,26 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult Delete(User user)
+        public IActionResult Delete(Customer customer)
         {
-            var result = _userService.Delete(user);
+            var result = _customerService.Delete(customer);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
+
         [HttpPatch("update")]
-        public IActionResult Update(User user)
+        public IActionResult Update(Customer customer) 
         {
-            var result = _userService.Update(user);
+            var result = _customerService.Update(customer);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
+    
     }
 }
