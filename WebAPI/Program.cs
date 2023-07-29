@@ -12,6 +12,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
@@ -83,6 +84,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+           Path.Combine(builder.Environment.ContentRootPath, "Data/Upload/Images")),
+    RequestPath = "/Files"
+});
 
 app.UseCors(MyAllowSpecificOrigins);//Cors
 

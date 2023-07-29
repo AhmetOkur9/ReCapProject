@@ -46,16 +46,12 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return filter == null
-                    ? context.Set<TEntity>().ToList()
+                return filter == null 
+                    ? context.Set<TEntity>().ToList() 
                     : context.Set<TEntity>().Where(filter).ToList();
             }
         }
 
-        public List<TEntity> GetByCategoryId(int carId)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Update(TEntity entity)
         {

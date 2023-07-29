@@ -9,6 +9,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,12 @@ namespace Business.Concrete
         {
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
-        } 
+        }
+        public IResult Update(Car car)
+        {
+            _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
+        }
 
         public IResult Delete(Car car)
         {
@@ -37,36 +43,47 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarDeleted);
         }
 
+
         public IDataResult<List<Car>> GetAll()
         {
             //Business code
             return new SuccessDataResult<List<Car>>( _carDal.GetAll(),Messages.CarListed);
         }
-
-        public IDataResult<List<Car>> GetCarsByBrandId(int id)
-        {
-            return new SuccessDataResult<List<Car>>( _carDal.GetAll(c=>c.BrandId == id),Messages.CarListed);
-        }
-
-        public IDataResult<List<Car>> GetCarsByColorId(int id)
-        {
-            return new SuccessDataResult<List<Car>> (_carDal.GetAll(c=>c.ColorId == id),Messages.CarListed);
-        }
-
-        public IDataResult<List<CarDetailDto>> GetCarDetails()
-        {
-            return new SuccessDataResult<List<CarDetailDto>>( _carDal.GetCarDetails(),Messages.CarListed);
-        }
-
-        public IResult Update(Car car)
-        {
-            _carDal.Update(car);
-            return new SuccessResult(Messages.CarUpdated);
-        }
+        
 
         public IResult AddTransactionalTest(Car car)
         {
             throw new NotImplementedException();
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarsDetailByBrandId(int brandId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetailByBrandId(brandId), Messages.Succeed);
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarsDetailByColorId(int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetailByColorId(colorId));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarsDetailByBrandAndColorId(int brandId, int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetailBrandAndColorId(brandId, colorId), Messages.Succeed);
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailById(int id)
+        {
+            var result = _carDal.GetCarDetailById(id);
+            if (result != null)
+            {
+                return new SuccessDataResult<List<CarDetailDto>>(result, Messages.Succeed);
+            }
+            return new ErrorDataResult<List<CarDetailDto>>(Messages.CarNotFound);
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetail()
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetail(), Messages.CarDetailListed);
         }
     }
 }

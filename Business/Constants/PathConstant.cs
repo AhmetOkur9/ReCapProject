@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Business.Constants
 {
-    public class PathConstants
+    public class PathConstant
     {
-        public static string ImagesPath = "Data\\Uploads\\Images\\";
+        public static string ImagePath = "Data\\Upload\\Images\\";
     }
 }

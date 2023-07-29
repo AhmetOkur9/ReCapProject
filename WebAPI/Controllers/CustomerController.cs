@@ -6,10 +6,10 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class customerController : ControllerBase
+    public class customersController : ControllerBase
     {
         ICustomerService _customerService;
-        public customerController(ICustomerService customerService)
+        public customersController(ICustomerService customerService)
         {
             _customerService= customerService;
         }

@@ -6,10 +6,10 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class brandController : ControllerBase
+    public class brandsController : ControllerBase
     {
         IBrandService _brandService;
-        public brandController(IBrandService brandService)
+        public brandsController(IBrandService brandService)
         {
             _brandService = brandService;
         }

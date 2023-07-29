@@ -1,4 +1,6 @@
 ﻿using Core.Entities.Concrete;
+using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,11 +47,11 @@ namespace Business.Constants
         public static string ColorAdded = "Renk eklendi";
         public static string ColorDeleted = "Renk silindi";
         public static string ColorUpdated = "Renk güncellendi";
-        public static string ColorListed ="Renkler listelendi";
+        public static string ColorListed = "Renkler listelendi";
 
         //Brand Manager
         public static string BrandListed = "Markalar listelendi";
-        public static string BrandAdded ="Marka eklendi";
+        public static string BrandAdded = "Marka eklendi";
         public static string BrandDeleted = "Marka silindi";
         public static string BrandUpdated = "Marka güncellendi";
 
@@ -58,6 +60,14 @@ namespace Business.Constants
         public static string CustomerAdded = "Müşteriler eklendi";
         public static string CustomerDeleted = "Müşteriler silindi";
         public static string CustomerUpdated = "Müşteriler güncellendi";
-        
+        internal static string CarDetailListed = "Arabalar tüm detayları ile listelendi";
+
+        public static string Succeed = "Başarılı";
+        public static string CarNotFound = "Araba bulunamadı";
+
+        //CarImageManager
+        public static string CarImageAdded = "Araba Resmi eklendi";
+        public static string Error = "Araba Resmi Yüklenemedi";
+        public static string CarImagesLimitExceded = "Resim Yükleme Limitine Ulaşıldı";
     }
 }
