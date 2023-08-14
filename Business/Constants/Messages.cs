@@ -79,6 +79,7 @@ namespace Business.Constants
         public static string CreditCardListed = "Kredi kartı listelendi";
         public static string CreditCardUpdated = "Kredi kartı güncellendi";
 
-
+        //BankPaymentManager
+        public static string PaymentSuccess = "Ödeme başarı ile gerçekleşti";
     }
 }
