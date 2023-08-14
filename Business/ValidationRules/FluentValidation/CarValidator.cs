@@ -20,6 +20,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(c => c.Description).Must(StartWithA).WithMessage("Ürünler A Harfi ile başlamalı");
         }
 
+
         private bool StartWithA(string arg)
         {
             return arg.StartsWith("A");

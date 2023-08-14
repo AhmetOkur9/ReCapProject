@@ -22,7 +22,10 @@ namespace DataAccess.Concrete.EntityFramework
                              join customer in context.Customers on r.CustomerId equals customer.UserId
                              select new RentalDetailDto
                              {
+                                 RentalId =r.Id,
                                  FullName = customer.CompanyName,
+                                 BrandId = brand.BrandId,
+                                 DailyPrice = c.DailyPrice,
                                  BrandName = brand.BrandName,
                                  RentDate = r.RentDate,
                                  ReturnDate = r.ReturnDate

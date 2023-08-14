@@ -26,6 +26,9 @@ namespace Business.Constants
         public static string RentalCarListed = "Seçtiğiniz Id ye uyan araba listelendi";
         public static string CarIsRented = "Seçtiğiniz araba şuan başkası tarafından kiralanmış halde";
         public static string RentalDtoListed = "Kiralama biligileri listelendi";
+        public static string ThisCarAlreadyRented ="Araba belirtilen tarhilerde kiralı";
+        public static string CarSuccessRented = "Kullanıcı ödeme sayfasına yönlendiriliyor";
+
 
         //User Manager
         public static string UserAdded = "Kullanıcı eklendi";
@@ -69,5 +72,13 @@ namespace Business.Constants
         public static string CarImageAdded = "Araba Resmi eklendi";
         public static string Error = "Araba Resmi Yüklenemedi";
         public static string CarImagesLimitExceded = "Resim Yükleme Limitine Ulaşıldı";
+
+        //PaymentManager
+        public static string CreditCardAdded ="Kredi kartı eklendi";
+        public static string CreditCardDeleted = "Kredi kartı silindi";
+        public static string CreditCardListed = "Kredi kartı listelendi";
+        public static string CreditCardUpdated = "Kredi kartı güncellendi";
+
+
     }
 }

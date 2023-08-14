@@ -28,6 +28,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new CarDetailDto
                              {
                                  CarId = c.Id,
+                                 ModelYear = c.ModelYear,
                                  BrandId = b.BrandId,
                                  ColorId = c.Id,
                                  BrandName = b.BrandName,
@@ -54,6 +55,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new CarDetailDto
                              {
                                  CarId = car.Id,
+                                 ModelYear = car.ModelYear,
                                  BrandId = b.BrandId,
                                  ColorId = c.ColorId,
                                  BrandName = b.BrandName,
@@ -79,6 +81,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new CarDetailDto
                              {
                                  CarId = car.Id,
+                                 ModelYear = car.ModelYear,
                                  ColorId = co.ColorId,
                                  BrandId = b.BrandId,
                                  BrandName = b.BrandName,
@@ -106,6 +109,7 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  CarId = c.Id,
                                  ColorId = co.ColorId,
+                                 ModelYear= c.ModelYear,
                                  BrandId = b.BrandId,
                                  BrandName = b.BrandName,
                                  ColorName = co.ColorName,
@@ -133,6 +137,7 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  CarId = c.Id,
                                  ColorId = co.ColorId,
+                                 ModelYear= c.ModelYear,
                                  BrandId = b.BrandId,
                                  BrandName = b.BrandName,
                                  ColorName = co.ColorName,
